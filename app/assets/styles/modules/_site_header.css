@@ -1,0 +1,160 @@
+
+.box-header{
+  padding: 10px 0;
+    width: 100%;
+    z-index: 10;
+    background-color: rgba(23, 51, 72, .85);
+
+    z-index: 2;
+    transition: background-color .3s ease-out;
+   
+    @mixin atMedium{
+      position: fixed;
+      background-color: rgba(23, 51, 72, .0);
+
+  }
+    &--box{
+    
+      transform: scale(1.2);
+      transition: all .3s ease-out;
+      position: relative;
+      padding-top: 90px;
+      text-align: center;
+     
+      @mixin atMedium{
+        opacity: 1;
+        display: flex;    
+        align-items: center;
+        padding: 0;
+        margin-top: -0.2rem;
+      }
+    }
+
+    .list-items {
+      padding-top: -5px;
+
+      
+      @mixin atMedium{
+        flex-basis: 80%;
+        padding-top: 0;
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      li{
+        list-style: none; display: inline-block; 
+        @mixin atMedium {
+          margin-left: 2rem;
+        }
+        @mixin atLarge{
+          margin-left:5rem;
+        }
+       
+      } 
+      
+    }
+    a {
+      color: #FFF;
+      font-weight: 300;
+      text-decoration: none;
+      display: block;
+      padding: 10px 2px;
+      font-size: .8rem;
+      background-color: rgba($mainBlue, .5);
+      cursor: pointer;
+  
+      @mixin atMedium {
+        color: #333; text-decoration: none;  font-size: 1.2rem;font-weight: bold; 
+        padding: 12px 0;
+        background-color: transparent;
+  
+        &.is-current-link {
+          color: #fabb69;
+        }
+      }
+    } 
+
+  
+    &__logo {
+      position: absolute;
+      top: 0.9rem;
+      left :50%;
+      transition: transform .3s ease-out;
+      transform: translateX(-50%) scale(.8);
+      transform-origin: 50% 0;
+      background-color: $mainBlue;
+      padding: 1rem 2rem;
+      @mixin atMedium {
+       padding: 0;
+       top: 0;
+       left: 80%;
+      
+       background-color:transparent;
+          transform: translateX(0);
+    
+          .site-header--dark & {
+            transform: scale(.55);
+          }
+      }
+     
+    }
+   
+
+}
+
+header {
+  position: relative;
+  top:0;
+  width: 100%;
+  height:45rem;
+  background-image: linear-gradient(#ff9d2f, #ff6126);
+  overflow: auto;
+  
+
+  @mixin atMedium{
+    height:54rem;
+  }
+  @mixin  atLarge {
+    height:40rem;
+  }
+
+}
+
+
+h1 {
+  padding: 100px 0;
+  font: 44px "Arial";
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+}
+
+.svg_class {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  z-index: 2;
+}
+@media (max-width: 699px) {
+  .svg--lg {
+    display: none;
+
+  }
+}
+
+@media (min-width: 700px) {
+  .svg--sm {
+    display: none;
+  }
+}
+section {
+  margin-top: 5vw;
+  background-image: linear-gradient(135deg, #777, #111);
+}
+section h1 {
+  color: rgb(0, 0, 0);
+}

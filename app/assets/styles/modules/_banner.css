@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Carrois+Gothic&display=swap');
+.banner{
+  
+ width: 100%;
+ position: absolute;
+ top: 8rem;
+ 
+ height: 400px;
+
+ @mixin atMedium {
+    top: 4rem;
+ }
+ 
+
+
+ &-section{
+    padding-left: 10px;
+        padding-right: 10px;
+        max-width: 1236px;
+        margin-left: auto;
+        margin-right: auto; 
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); 
+        gap:3rem;
+    @mixin atLarge{      
+        max-width: 2000px;
+        grid-template-columns: minmax(200px,1fr) 800px;           
+        height: 550px;
+    }
+   
+
+    .section-border{}
+
+   &_b{
+    border-radius: 10px;   
+    box-shadow: inset 0 1px 1px 0 hsla(0,0%,100%,.1),0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
+   
+    background: -moz-linear-gradient(-45deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+    padding: 1rem;
+    .img-wrapper{
+      
+        width:100%;
+        height: 100%;
+        border-radius: 36px;
+        background: #f6f9fc;
+        box-shadow: 0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3),inset 0 -2px 6px 0 rgba(10,37,64,.35);
+        padding: 12px;
+         
+     .eaz-num{
+         display: grid;
+         
+         grid-template-columns: repeat(3, 1fr); 
+         font-family: 'Carrois Gothic', sans-serif;
+         font-size: 0.6rem;
+         width: 40%;
+         position: relative;
+         bottom: 23%;
+         left: 40%;
+         object-fit: cover; 
+
+         @mixin atSmall {
+            font-size: 1.1rem;
+         }
+         @mixin  atMedium {
+            font-size: 1.6rem;
+            
+          }
+        
+        &-counter-sales{
+            text-align: center; 
+            position: relative;
+            left: 0.9rem;
+         }
+       
+        &-grid{
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+        }
+
+        .dollar{
+            position: relative;
+            text-align: center; 
+            left: 0.2rem;
+        }
+     }
+     }
+    }
+ }
+
+
+ 
+}
+
+.css-selector {
+    background: linear-gradient(239deg, #2646ac, #101629, #737681);
+    background-size: 600% 600%;
+
+    -webkit-animation: AnimationName 32s ease infinite;
+    -moz-animation: AnimationName 32s ease infinite;
+    animation: AnimationName 32s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:54% 0%}
+    50%{background-position:47% 100%}
+    100%{background-position:54% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:54% 0%}
+    50%{background-position:47% 100%}
+    100%{background-position:54% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:54% 0%}
+    50%{background-position:47% 100%}
+    100%{background-position:54% 0%}
+}
+
+
+.shape{
+    width: 100%;
+    height: 200px;
+    background-color: palegreen;
+    clip-path: polygon(100% 0,0 0,0 77.5%,1% 77.4%,2% 77.1%,3% 76.6%,4% 75.9%,5% 75.05%,6% 74.05%,7% 72.95%,8% 71.75%,9% 70.55%,10% 69.3%,11% 68.05%,12% 66.9%,13% 65.8%,14% 64.8%,15% 64%,16% 63.35%,17% 62.85%,18% 62.6%,19% 62.5%,20% 62.65%,21% 63%,22% 63.5%,23% 64.2%,24% 65.1%,25% 66.1%,26% 67.2%,27% 68.4%,28% 69.65%,29% 70.9%,30% 72.15%,31% 73.3%,32% 74.35%,33% 75.3%,34% 76.1%,35% 76.75%,36% 77.2%,37% 77.45%,38% 77.5%,39% 77.3%,40% 76.95%,41% 76.4%,42% 75.65%,43% 74.75%,44% 73.75%,45% 72.6%,46% 71.4%,47% 70.15%,48% 68.9%,49% 67.7%,50% 66.55%,51% 65.5%,52% 64.55%,53% 63.75%,54% 63.15%,55% 62.75%,56% 62.55%,57% 62.5%,58% 62.7%,59% 63.1%,60% 63.7%,61% 64.45%,62% 65.4%,63% 66.45%,64% 67.6%,65% 68.8%,66% 70.05%,67% 71.3%,68% 72.5%,69% 73.6%,70% 74.65%,71% 75.55%,72% 76.35%,73% 76.9%,74% 77.3%,75% 77.5%,76% 77.45%,77% 77.25%,78% 76.8%,79% 76.2%,80% 75.4%,81% 74.45%,82% 73.4%,83% 72.25%,84% 71.05%,85% 69.8%,86% 68.55%,87% 67.35%,88% 66.2%,89% 65.2%,90% 64.3%,91% 63.55%,92% 63%,93% 62.65%,94% 62.5%,95% 62.55%,96% 62.8%,97% 63.3%,98% 63.9%,99% 64.75%,100% 65.7%);
+    transform: skewY(-12deg);
+}
+
+
+
+.Gradient{
+    transition: transform 1s 1s;
+    background: radial-gradient(var(--gradientColorThree) 23%,var(--gradientColorThreeTransparent) 67% 100%) 385px -24px,radial-gradient(var(--gradientColorOne) 0,var(--gradientColorOneTransparent) 60% 100%) -940px 290px,radial-gradient(var(--gradientColorTwo) 10%,var(--gradientColorTwoTransparent) 60% 100%) -120px 250px,radial-gradient(var(--gradientColorOne) 40%,var(--gradientColorOneTransparent) 57% 100%) 495px -44px,radial-gradient(var(--gradientColorZero) 30%,var(--gradientColorZeroTransparent) 67% 100%) 122px -120px,radial-gradient(var(--gradientColorZero) 10%,var(--gradientColorZeroTransparent) 60% 100%) -420px 120px,radial-gradient(var(--gradientColorTwo) 15%,var(--gradientColorTwoTransparent) 50% 100%) -620px 0,radial-gradient(var(--gradientColorTwo) 25%,var(--gradientColorTwoTransparent) 50% 100%) 520px -250px,var(--gradientColorZero);
+    background-repeat: repeat-y;
+}
+.Gradient {
+    background: radial-gradient(var(--gradientColorZero) 40%,var(--gradientColorTwoTransparent) 60%) -420px -180px no-repeat,radial-gradient(var(--gradientColorThree) 23%,var(--gradientColorThreeTransparent) 70%) 240px -24px no-repeat,radial-gradient(var(--gradientColorTwo) 30%,var(--gradientColorTwoTransparent) 70%) -270px 220px no-repeat,var(--gradientColorZero);
+}
+.HomepageHeroGradient {
+    --gradientColorZero: #a960ee;
+    --gradientColorOne: #ff333d;
+    --gradientColorTwo: #90e0ff;
+    --gradientColorThree: #ffcb57;
+    --gradientColorZeroTransparent: rgba(169,96,238,0);
+    --gradientColorOneTransparent: rgba(255,51,61,0);
+    --gradientColorTwoTransparent: rgba(144,224,255,0);
+    --gradientColorThreeTransparent: rgba(255,203,87,0);
+    --gradientAngle: -12deg;
+    --gradientHeight: calc(100% + var(--sectionPaddingTop) + var(--transformOriginX)*var(--sectionAngleSin));
+    --offsetX: var(--gutterWidth);
+    --transformOriginX: -60px;
+    --sectionAngleSin: var(--angleStrongSin);
+
+    --transformOriginX: calc(var(--gutterWidth)*0.8);
+}
+.ver{
+    background-color: $primaryMob;
+}

@@ -1,0 +1,28 @@
+html{
+    scroll-behavior:auto;
+    background-color:#ccc;
+background-image: linear-gradient(white 2px, transparent 2px),
+linear-gradient(90deg, white 2px, transparent 2px),
+linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
+background-size: 400px 400px, 400px 100px, 40px 40px, 40px 40px;
+background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  }
+  body {
+    font-family: monospace, monospace;
+    color: #333;
+    
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  a {
+    color:rgb(224, 130, 22);
+  }
