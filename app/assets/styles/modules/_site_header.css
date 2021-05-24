@@ -2,15 +2,20 @@
 .box-header{
   padding: 10px 0;
     width: 100%;
-    z-index: 10;
-    background-color: rgba(23, 51, 72, .85);
-
     z-index: 2;
     transition: background-color .3s ease-out;
-   
+    
+    &--is-expanded{      
+      background-color: $azuloscuro;
+    }
+
     @mixin atMedium{
       position: fixed;
-      background-color: rgba(23, 51, 72, .0);
+
+      &--dark{
+        background-color: $azuloscuro;
+
+    }
 
   }
     &--box{
@@ -30,7 +35,7 @@
       }
     }
 
-    .list-items {
+    &-list-items {
       padding-top: -5px;
 
       
@@ -50,56 +55,139 @@
         @mixin atLarge{
           margin-left:5rem;
         }
-       
+        
       } 
       
-    }
-    a {
-      color: #FFF;
-      font-weight: 300;
-      text-decoration: none;
-      display: block;
-      padding: 10px 2px;
-      font-size: .8rem;
-      background-color: rgba($mainBlue, .5);
-      cursor: pointer;
-  
-      @mixin atMedium {
-        color: #333; text-decoration: none;  font-size: 1.2rem;font-weight: bold; 
-        padding: 12px 0;
-        background-color: transparent;
-  
-        &.is-current-link {
-          color: #fabb69;
-        }
-      }
-    } 
+      a {
+        color: #FFF;
+        font-weight: 300;
+        text-decoration: none;
+        display: block;
+        padding: 10px 2px;
+        font-size: .8rem;
+        background-color: rgba($mainBlue, .5);
+        opacity: 0;
+        transform: scale(1.2);
+        transition: all .3s ease-out;
+        z-index: -10;
+    
+        @mixin atMedium {
+          color: #333; text-decoration: none;  font-size: 1.2rem;font-weight: bold; 
+          padding: 12px 0;
+          background-color: transparent;
+          opacity: 1;
+          z-index: 1;
+          transform: scale(1);
+         
+          .box-header--dark & {color: #FFF;font-size: 1rem; padding: 5px 0;}
+        
+          &.is-current-link {
+            color: #fabb69;
+          }
+          
+        }       
 
+     
+      } 
+      &--is-visible{
+      a{
+        opacity: 1;
+        z-index: 1;
+        transform: scale(1);
+      }
+    }
+    }
+   
+    
   
     &__logo {
       position: absolute;
       top: 0.9rem;
       left :50%;
+      height: 112px;
       transition: transform .3s ease-out;
       transform: translateX(-50%) scale(.8);
       transform-origin: 50% 0;
-      background-color: $mainBlue;
-      padding: 1rem 2rem;
+      background-color: $azulcielo;
+      padding: 1rem 1rem;
+
       @mixin atMedium {
        padding: 0;
        top: 0;
-       left: 80%;
-      
+       left: 80%;      
        background-color:transparent;
           transform: translateX(0);
     
-          .site-header--dark & {
+          .box-header--dark & {
             transform: scale(.55);
           }
       }
      
     }
    
+
+    &__menu-icon{
+      width: 20px;
+      height: 19px;
+      position: absolute;
+      z-index: 10;
+      top: 10px;
+      right: 10px;
+      
+      &::before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 3px;
+          background-color:#fff;
+          transform-origin: 0 0;
+          transition: transform .3s ease-out;
+      }
+      &__middle{
+          position: absolute;
+          top: 8px;
+          left: 0;
+          width: 20px;
+          height: 3px;
+          background-color:#fff;
+          transition: all .3s ease-out;
+          transform-origin:0 50%;
+      }
+      &::after{
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 20px;
+          height: 3px;
+          background-color:#fff;
+          transform-origin: 0 100%;
+          transition: transform .3s ease-out;
+
+      }
+      @mixin atMedium{
+          display: none;
+      }
+
+  }
+ 
+  &__menu-icon--close-x{
+      &::before{
+          transform: rotate(45deg) scaleX(1.25);
+
+      }
+
+      .box-header__menu-icon__middle{
+          opacity: 0;
+          transform: scaleX(0);
+      }
+      &::after{
+          transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+
+      }
+  }
 
 }
 
