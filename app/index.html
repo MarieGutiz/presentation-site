@@ -34,11 +34,13 @@
 
    
 
-    <div class="banner ">
+    <div class="banner ">     
       <div class="banner-section">
-        <div class="banner-section_a">
-          <svg id="svglinegraph" viewBox="0 0 600 600">
-          </svg>
+        <div class="banner-section_a">         
+         
+            <div class="banner-section_a_container">             
+                </div>
+               
         </div>
         <div class="banner-section_b ">
          
@@ -57,18 +59,25 @@
           </div>
          </div>
         </div>
-      </div>
-   
+   </div>
   </div>
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"  class="svg_class">
-    <linearGradient id="magenta2cyan" >
-      <!-- First color is magenta. -->
+    <linearGradient id="gradient1" >
       <stop offset="0%" style="stop-color:rgb(225, 227, 247)"/>
-      <!-- Second color is cyan. -->
       <stop offset="100%" style="stop-color:rgba(255,255,255,0)"/>
-      </linearGradient>   
-    <polygon class="svg--sm" fill="url(#magenta2cyan)" points="0,0 30,100 65,21 90,100 100,75 100,100 0,100"/>
-    <polygon class="svg--lg" fill="url(#magenta2cyan)" points="0,0 15,100 33,21 45,100 50,75 55,100 72,20 85,100 95,50 100,80 100,100 0,100" />
+      </linearGradient> 
+      <linearGradient id="gradient2" >
+        <stop offset="0%" style="stop-color:rgb(0, 13, 158)"/>
+        <stop offset="100%" style="stop-color:rgba(255, 255, 255, 0.856)"/>
+        </linearGradient> 
+      <path class="svg--lg" d="M44.1221 2.51185L59.9379 164.936L0.493673 164.403L44.1221 2.51185Z" fill="url(#gradient2)"/>
+      <path class="svg--lg" d="M24.5 0L48.3157 150.75H0.684301L24.5 0Z" fill="#fff"/>
+      <path class="svg--lg" d="M84.6457 7.72525L95 207.874L42 207.874L4.7519e-10 207.874L84.6457 7.72525Z" fill="#2646ac"/>
+    <polygon class="svg--sm" fill="url(#gradient1)" points="0,0 30,100 65,21 90,100 100,75 100,100 0,100"/>
+    <polygon class="svg--lg" fill="url(#gradient1)" points="0,0 15,100 33,21 45,100 50,75 55,100 72,20 85,100 95,50 100,80 100,100 0,100" />
+   
+
+ 
   </svg>
   </header>
  

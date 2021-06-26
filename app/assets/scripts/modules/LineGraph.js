@@ -1,93 +1,102 @@
 
-/*
-
-******************
-
-LINE DRAWING ANIMATION WITH SNAP SVG
-
-I coded a line drawing animating with snap svg. The graph is not created out of a single line because the animating with separate paths and easing on each section simply looks better :)
-
-1.The step of the points is evenly spread on the x axis depending on how many points your graph has.
-
-2.Values passed to the graph should have a negative prefix because of the graph's coordinate system (-x = up).
-
-3.Below you will find an array of prices into which you can insert your own custom values.
-
-******************
-*/
+import Snap from 'snapsvg';
 
 
+class LineGraph{
 
+  constructor(el){
+    // this.obj = el;
+       //CHART VALUES
+      //  this.chartH = this.obj.clientHeight;
+      //  this.chartW = this.obj.clientWidth; //Attempting to authenticate
 
+         this.chartH =531.2;
+         this.chartW =409.8;
+      
+       this.prices = [];
+       this.myPath = [];
+       this.circle = [];
+       this.setValues();    
 
-//INVERTED VALUES BECAUSE -X = Up direction because of coord system
-// FEEL FREE TO INSERT YOUR OWN VALUES
-var price = [0,-95, -30, -65, -35, -215, -95, -70, -115];
-/* FOR FUTURE USE OF PARSING DATA.
-function updatePrice(){
-  var inputPrices = $('#values').val();
-  var priceArr = inputPrices.split(',');
-  price = priceArr;
-  for (i=0;i<priceArr.length;i++){
-    var parsedPrice = parseInt(priceArr[i]);
-    function isNeg(parsedPrice){
-      if(parsedPrice > 0){
-        parsedPrice *= -1;
-        return parsedPrice
-      }else {
-        parsedPrice = 0;
-        return parsedPrice;
-      }
+       this.injectHTML();
+
     }
-    price[i] = isNeg(parsedPrice);
+    injectHTML(){   
+      let banner = document.querySelector(".banner-section_a_container");     
+
+      banner.insertAdjacentHTML('beforeend',`
+      <div class="content">      
+      <h2 class="frame-1">Interested in datailed reports </h2>
+      <h2 class="frame-2">For your business or research?</h2>
+      <h2 class="frame-3">...Realized with the latest technology</h2>
+      <h2 class="frame-4">Ask now!</h2>
+      <h2 class="frame-5">
+        <span>Get your business analysis.</span> 
+        <span>Get knowledge of it.</span> 
+        <span>Help your business grow!!</span>
+      </h2> 
+      <svg id="svglinegraph" viewBox="0 0 600 600">
+      </svg>
+     
+    </div>
+ 
+      `)
+     
+     this.repeatedGreetings()
+ 
     }
-  console.log(price);
-}*/
-//CHART VALUES
-var chartH = $('#svg').height();
-var chartW = $('#svg').width();
+    async repeatedGreetings(){
+      await this.sleep(12900)
+     //Locks
+      this.draw()
+      this.animate()
+    }
+    sleep(delay){//Threading
+     return new Promise((resolve) => setTimeout(resolve, delay))
+    }
+    setValues(){
+    // PARSE PRICES TO ALIGN WITH BOTTOM OF OUR SVG
+    // let price = [0,-95, -30, -65, -35, -215, -95, -70, -115];
+    let price = [0,-190, -60, -130, -70, -400, -190, -140, -335];
+    for (let i = 0; i < price.length; i++) {
+      this.prices[i] = price[i]+this.chartH;
+      
+    }
+     
+    }
+   step(i, chartW) {
+        return chartW / this.prices.length * i;
+    }
+    draw(){
+        //DEFINE SNAP SVG AND DETERMINE STEP NO.
+    var paper = Snap('#svglinegraph');
 
-// PARSE PRICES TO ALIGN WITH BOTTOM OF OUR SVG
-var prices = [];
-for (i = 0; i < price.length; i++) {
-    prices[i] = price[i] + $('#svg').height();
-}
-
-function draw() {
-    //DEFINE SNAP SVG AND DETERMINE STEP NO.
-    var paper = Snap('#svg');
-    var steps = prices.length;
-
+    var steps = this.prices.length;
     // EVENLY DISTRIBUTE OUR POINTS ALONG THE X AXIS
-
-    function step(i, chartW) {
-        return chartW / prices.length * i;
-    }
-
     var points = [];
     var breakPointsX = [];
     var breakPointsY = [];
     var point = {};
 
-    for (i = 1; i < prices.length; i++) {
+    for (let i = 1; i < this.prices.length; i++) {
 
         //CALCULATE CURRENT POINT
 
-        var currStep = step(i, chartW);
-        var y = prices[i];
+        var currStep = this.step(i, this.chartW);
+        var y = this.prices[i];
         point.x = Math.floor(currStep);
         point.y = y;
 
         //CALCULATE PREVIOUS POINT
 
         var prev = i - 1;
-        var prevStep = step(prev, chartW);
-        var prevY = prices[prev];
+        var prevStep = this.step(prev, this.chartW);
+        var prevY = this.prices[prev];
         point.prevX = Math.floor(prevStep);
         point.prevY = prevY;
         if (point.prevX === 0 || point.prevY === 0){
           point.prevX = 15;
-          point.prevY = chartH - 15;
+          point.prevY = this.chartH - 15;
         }
         // SAVE PATH TO ARRAY
         points[i] = " M" + point.prevX + "," + point.prevY + " L" + point.x + "," + point.y;
@@ -101,10 +110,10 @@ function draw() {
 
     // DRAW LINES
 
-    for (i = 0; i < points.length; i++) {
-        var myPath = paper.path(points[i]);
-        var len = myPath.getTotalLength();
-        myPath.attr({
+    for (let i = 0; i < this.prices.length; i++) {
+        this.myPath[i] = paper.path(points[i]);
+        var len = this.myPath[i].getTotalLength();
+        this.myPath[i].attr({
             'stroke-dasharray': len,
                 'stroke-dashoffset': len,
                 'stroke': 'white',
@@ -112,84 +121,88 @@ function draw() {
                 'stroke-width': 4,
                 'stroke-linejoin': 'round',
                 'id': 'myLine' + i,
-                'class': 'line'
+                'class':'line'
         });
     }
+  
     // DRAW BREAKPOINTS
-    for (i = 0; i < points.length; i++) {
-        var circle = paper.circle(breakPointsX[i], breakPointsY[i], 5);
-        circle.attr({
-            'fill': '#FF4864',
+    for (let i = 0; i < points.length; i++) {
+        this.circle[i] = paper.circle(breakPointsX[i], breakPointsY[i], 5);
+        this.circle[i].attr({
+            'fill': '#005996',
                 'stroke': 'white',
                 'stroke-width': 3,
                 'id': 'myCirc' + i,
                 'class':'breakpoint'
         });
     }
-  // DRAW COORDINATE SYSTEM
-    var xAxis = paper.path('M0,'+chartH+'L'+chartW+","+chartH);
-    var yAxis = paper.path('M0,'+chartH+'L0,0');
+  //DRAW COORDINATE SYSTEM
+    var xAxis = paper.path('M0,'+this.chartH+'L'+this.chartW+","+this.chartH);
+    var yAxis = paper.path('M0,'+this.chartH+'L0,0');
   
   var xOff = xAxis.getTotalLength();
   var yOff = yAxis.getTotalLength();
-  var start = (prices.length*250+"ms");
-
+  var start = (this.prices.length*250+"ms");
+ 
   yAxis.attr({
-    'stroke':'white',
-    'stroke-width':1,
+    'stroke':'black',
+    'stroke-width':2,
     'stroke-dasharray':yOff,
     'stroke-dashoffset':yOff,
     'id':'yAxis'
   });
   xAxis.attr({
-    'stroke':'white',
-    'stroke-width':1,
-    'stroke-dasharray':xOff,
-    'stroke-dashoffset':xOff,
+    'stroke':'black',
+    'stroke-width':2,
+    'stroke-dasharray':xOff+600,
+    'stroke-dashoffset':xOff+600,
     'id':'xAxis'
   });
   console.log(start);
-  $('#yAxis').css({
-    '-webkit-transition-delay':start,
-    '-webkit-transition':'all 200ms ease-in'
-  });
-   $('#xAxis').css({
-    '-webkit-transition-delay':start,
-    '-webkit-transition':'all 200ms ease-in'
-  });
-  $('#xAxis').animate({
+
+  xAxis.animate({
     'stroke-dashoffset':'0'
-  });
-  $('#yAxis').animate({
-    'stroke-dashoffset': '0'
-  });
-}
-function animate(){
-  for (i=0;i<prices.length;i++){
-    var circ = $('#myCirc'+i);
-    var line = $('#myLine'+i);
-    circ.css({
-      '-webkit-transition':'all 550ms cubic-bezier(.84,0,.2,1)',
-      '-webkit-transition-delay':375+(i*125)+"ms"
+},1200, mina.easeinout)
+
+  yAxis.animate({
+    'stroke-dashoffset':'0'
+},1000, mina.backout)
+    }
+    animate(){
+    
+     
+       for (let i=0;i<this.prices.length;i++){
+        var circ = document.querySelector('#myCirc'+i)
+        var line = document.querySelector('#myLine'+i);
+
+        this.css(circ, {
+          '-webkit-transition':'all 550ms cubic-bezier(.84,0,.2,1)',
+          'transition':'all 550ms cubic-bezier(.84,0,.2,1)',
+          'transition-delay':375+(i*125)+"ms",
+          '-webkit-transition-delay':375+(i*125)+"ms"
       });
-    line.css({
-      '-webkit-transition':'all 250ms cubic-bezier(.84,0,.2,1)',
-      '-webkit-transition-delay':i*125+"ms"
-      });
-    line.animate({
-      'stroke-dashoffset':0
+      this.css(line, {
+        '-webkit-transition':'all 550ms cubic-bezier(.84,0,.2,1)',
+        'transition':'all 550ms cubic-bezier(.84,0,.2,1)',
+        'transition-delay':375+(i*125)+"ms",
+        '-webkit-transition-delay':375+(i*125)+"ms"
     });
-    circ.css({
-      'transform':'scale(1)'
+      this.myPath[i].animate({
+        'stroke-dashoffset':'0'
+      },2000, mina.easein)
+      this.css(circ, {
+        'transform':'scale(1)'
     });
-  }
-}
-$(window).load(function(){
-  draw();
-  animate();
-})
-$('#draw').on('click',function(){
-  $('#svg').empty();
-  draw();
-  animate();
-});
+       
+       }
+          }
+
+         css(element, style) {
+            for (const property in style)
+                element.style[property] = style[property];
+        }
+
+    }
+
+
+export default LineGraph

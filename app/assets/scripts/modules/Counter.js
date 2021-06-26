@@ -21,9 +21,11 @@ class Counter{
          
           if (progress < 1) {
             window.requestAnimationFrame(step);
+           
           }
         };
         window.requestAnimationFrame(step);
+       
       }
       financial(x) {
         return Number.parseFloat(x).toFixed(2);

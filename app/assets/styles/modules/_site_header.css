@@ -3,6 +3,7 @@
   padding: 10px 0;
     width: 100%;
     z-index: 2;
+    position: relative;
     transition: background-color .3s ease-out;
     
     &--is-expanded{      
@@ -108,7 +109,6 @@
       transition: transform .3s ease-out;
       transform: translateX(-50%) scale(.8);
       transform-origin: 50% 0;
-      background-color: $azulcielo;
       padding: 1rem 1rem;
 
       @mixin atMedium {
@@ -195,16 +195,22 @@ header {
   position: relative;
   top:0;
   width: 100%;
-  height:45rem;
+  height:50rem;
   background-image: linear-gradient(#ff9d2f, #ff6126);
+  background-color: #fff;
   overflow: auto;
   
-
+@mixin atSmall {
+  height:66rem;
+ }
   @mixin atMedium{
-    height:54rem;
+    height:70rem;
   }
   @mixin  atLarge {
-    height:40rem;
+    height:44rem;
+  }
+  @mixin atXXLarge{
+    height: 53rem;
   }
 
 }
@@ -224,7 +230,7 @@ header h1 {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 70px;
   z-index: 2;
 }
 @media (max-width: 699px) {

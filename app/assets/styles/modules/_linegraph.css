@@ -1,0 +1,47 @@
+#svglinegraph {
+    top: 20%;
+    left: 40%;
+    width: 60%;
+    height: 80%;
+    position: absolute;
+    -webkit-transform:translate3d(-20%,-20%,0);   
+    transform:translate3d(-20%,-20%,0);   
+
+  
+    @mixin atLarge{
+      top: 10%;
+      width: 80%;
+      height: 80%;
+    }
+   
+}
+
+
+.line {
+  stroke-dashoffset:0;
+  box-shadow: 10px 10px 1px black;
+}
+.breakpoint{
+  transform:scale(0);
+  position:absolute;
+  -webkit-transform-origin:50% 50%;
+  transform-origin: 50% 50%;
+}
+.active{
+  transform:scale(1)
+}
+
+path.pathOne {
+  
+  animation: finance 700ms  cubic-bezier(.84,0,.2,1);
+  transition-delay:2250ms;
+  
+}
+@keyframes finance {
+  from {
+    stroke-dashoffset: 79.6304;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

@@ -11,10 +11,13 @@ const postCSSPlugins = [
   ]
 
   let cssConfig = {
-    test: /\.css$/i,
-         use: ['css-loader?url=false',
-          { loader: "postcss-loader", options: { postcssOptions: { plugins: postCSSPlugins } } }]
+      test: /\.css$/i,
+      use: ["style-loader", "css-loader?url=false", { loader: "postcss-loader", options: { postcssOptions: { plugins: postCSSPlugins } } }]
           
+  }
+  let svgConfig= {
+    test: require.resolve('snapsvg/dist/snap.svg.js'),
+    use: 'imports-loader?this=>window,fix=>module.exports=0',
   }
   module.exports = {
     entry: './app/assets/scripts/App.js',
@@ -34,10 +37,16 @@ const postCSSPlugins = [
     mode: 'development',
     module: {
       rules: [
+        cssConfig,
         {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader?url=false", { loader: "postcss-loader", options: { postcssOptions: { plugins: postCSSPlugins } } }]
-        }
+          test: require.resolve('snapsvg/dist/snap.svg.js'),
+          use: 'imports-loader?wrapper=window&additionalCode=module.exports=0;',
+        },
       ]
+    },
+    resolve: {
+      alias: {
+        snapsvg: 'snapsvg/dist/snap.svg.js',
+      }
     }
   }

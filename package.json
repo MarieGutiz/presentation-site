@@ -1,7 +1,7 @@
 {
   "name": "presentation-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "Personal Website",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack",
@@ -13,11 +13,13 @@
   "dependencies": {
     "lazysizes": "^5.3.2",
     "loadash": "^1.0.0",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "snapsvg": "^0.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
     "css-loader": "^5.2.4",
+    "imports-loader": "^3.0.0",
     "postcss-hexrgba": "^2.0.1",
     "postcss-import": "^14.0.1",
     "postcss-loader": "^5.2.0",
