@@ -26,9 +26,10 @@ class StickHeader{
           this.boxHeader.classList.add("box-header--dark")
         } else {
           this.boxHeader.classList.remove("box-header--dark")
+          this.pageSections.forEach(el => this.reset(el))
         }
     
-       // this.pageSections.forEach(el => this.calcSection(el))
+       this.pageSections.forEach(el => this.calcSection(el))
       }
     
       determineScrollDirection() {
@@ -39,5 +40,24 @@ class StickHeader{
         }
         this.previousScrollY = window.scrollY
       }
+
+      calcSection(el) {
+        if (window.scrollY + this.browserHeight > el.offsetTop && window.scrollY < el.offsetTop + el.offsetHeight) {
+          let scrollPercent = el.getBoundingClientRect().top / this.browserHeight * 100
+          console.log("scrollPercent  "+scrollPercent)
+          if (scrollPercent < 28 && scrollPercent > -0.3 && this.scrollDirection == 'down' || scrollPercent < 28 && this.scrollDirection == 'up') {
+            let matchingLink = el.getAttribute("data-matching-link")
+            //console.log("el "+el)
+            document.querySelectorAll(`.box-header-list-items a:not(${matchingLink})`).forEach(el=>el.classList.remove("is-current-link"))
+            document.querySelector(matchingLink).classList.add("is-current-link")
+          }
+        }
+      }
+      reset(el){
+        let matchingLink = el.getAttribute("data-matching-link")
+           console.log("reset el "+el)
+            document.querySelectorAll(`.box-header-list-items a:not(${matchingLink})`).forEach(el=>el.classList.remove("is-current-link"))
+      }
+
 }
 export default StickHeader

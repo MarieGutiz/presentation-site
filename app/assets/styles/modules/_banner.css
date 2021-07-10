@@ -29,7 +29,7 @@
         height: 100%;
         z-index: 0;
         
-        font-family: 'Carrois Gothic', sans-serif;
+        font-family: Carrois Gothic;
        &_container{
         border-radius: 10px;   
         box-shadow: inset 0 1px 1px 0 hsla(0,0%,100%,.1),0 50px 100px -20px rgba(50,50,93,.25),0 30px 60px -30px rgba(0,0,0,.3);
@@ -127,34 +127,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
      }
     }
  }
-
-
  
-}
-
-.css-selector {
-    background: linear-gradient(239deg, #2646ac, #101629, #737681);
-    background-size: 600% 600%;
-
-    -webkit-animation: AnimationName 32s ease infinite;
-    -moz-animation: AnimationName 32s ease infinite;
-    animation: AnimationName 32s ease infinite;
-}
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:54% 0%}
-    50%{background-position:47% 100%}
-    100%{background-position:54% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:54% 0%}
-    50%{background-position:47% 100%}
-    100%{background-position:54% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:54% 0%}
-    50%{background-position:47% 100%}
-    100%{background-position:54% 0%}
 }
 
 
@@ -192,7 +165,4 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     --sectionAngleSin: var(--angleStrongSin);
 
     --transformOriginX: calc(var(--gutterWidth)*0.8);
-}
-.ver{
-    background-color: $primaryMob;
 }

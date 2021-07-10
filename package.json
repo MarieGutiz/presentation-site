@@ -14,7 +14,8 @@
     "lazysizes": "^5.3.2",
     "loadash": "^1.0.0",
     "normalize.css": "^8.0.1",
-    "snapsvg": "^0.5.1"
+    "snapsvg": "^0.5.1",
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
