@@ -1,6 +1,7 @@
 import throttle from 'lodash/throttle'
 import debounce from 'lodash/debounce'
 import Counter from './Counter';
+import Typed from "typed.js"
 
 class RevealOnScroll {
   constructor(els,thresholpercent, type=common) {
@@ -14,7 +15,6 @@ class RevealOnScroll {
   }
 
   events() {
-    //window.addEventListener("pageshow")
     window.addEventListener("scroll", this.scrollThrottle)
     window.addEventListener("resize",debounce(()=>{ 
         this.browserHeight = window.innerHeight
@@ -22,7 +22,6 @@ class RevealOnScroll {
   }
 
   calcCaller() {
-   // console.log("Scroll function ran")
     this.itemsToReveal.forEach(el => {
       if (el.isRevealed == false) {
        
@@ -34,18 +33,19 @@ class RevealOnScroll {
   calculateIfScrolledTo(el) {
    // console.log(" el.offsetTop "+ el.offsetTop)//432
    if(window.scrollY+this.browserHeight > el.offsetTop){
-  //  console.log("Element was calculated")//ver
     let scrollPercent = (el.getBoundingClientRect().top / this.browserHeight) * 100
-    //console.log("scrollPercent "+scrollPercent)
     if (scrollPercent < this.thresholpercent) {
       // el.classList.add("reveal-item--is-visible")
-      // console.log("scrollpercent "+this.type)
       el.isRevealed = true
 
        if(this.type == "counter")
         this.runCounter(el)
-        else
+        if(this.type == "bars")
+        this.barFilling(el)
+        if(this.type =="about")
         this.lightAbout(el)
+        if(this.type == "section")
+        this.terminal(el)
         //el.classList.add("reveal-item--is-visible")
 
       if (el.isLastItem) {
@@ -54,10 +54,21 @@ class RevealOnScroll {
     }
    }
   }
+  terminal(el){
+    new Typed('#typed', {
+      strings: [
+        'npm install^1000\n`installing components...` ^1000\n`Fetching from source...`'
+      ],
+      typeSpeed: 40,
+      backSpeed: 0,
+      loop: false
+    });
+  }
   lightAbout(el){
    // about-items
    if(el.isRevealed){
     el.classList.add("about-items--is-visible")
+  
    }
    
   }
@@ -69,6 +80,23 @@ class RevealOnScroll {
     }
   
   }
+  async barFilling(el){
+   
+    if(el.isRevealed){
+     let colors=["green","orange","red","mob"]
+     let values=[75,65,55,65]
+     let i=0;
+   
+      for (const key of colors) {
+        new Counter(document.querySelector(".progress--"+key+"-bar"),1000,"bars",values[i])      
+       await this.sleep(400)
+      i++
+      }
+    }
+  }
+  sleep(delay){//Threading
+    return new Promise((resolve) => setTimeout(resolve, delay))
+   }
 
   hideInitially() {
     this.itemsToReveal.forEach(el => {

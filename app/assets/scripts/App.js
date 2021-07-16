@@ -5,7 +5,6 @@ import StickHeader from './modules/StickHeader'
 import MobileMenu from './modules/MobileMenu'
 import LineGraph from './modules/LineGraph'
 import RevealOnScroll from './modules/RevealOnScroll';
-import Typing from './modules/Typing';
 
 window.addEventListener('load', (event) => {
   new Counter(document.querySelector("#counter"),5000,"entire")
@@ -15,8 +14,9 @@ window.addEventListener('load', (event) => {
    new MobileMenu()
  new LineGraph(document.querySelector('#svglinegraph'));
  new RevealOnScroll(document.querySelectorAll(".eaz-num"), 100,"counter")
+ new RevealOnScroll(document.querySelectorAll("#about-section"), 40,"section")
  new RevealOnScroll(document.querySelectorAll(".about-items"), 60,"about")
- new Typing()
+ new RevealOnScroll(document.querySelectorAll(".skills"),50,"bars")
 });
 
 

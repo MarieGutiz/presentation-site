@@ -12,6 +12,7 @@
       &--lighterblue{
         margin-top: 5vw;
         background-color: $azulclaro;
+        color: #FFF;
         
     }
 }

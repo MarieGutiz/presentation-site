@@ -1,11 +1,19 @@
 
 class Counter{
 
-    constructor(el, diarkeia,type){
+    constructor(el,diarkeia,type, init=0){
       this.obj = el;
-      this.end = this.obj.innerHTML
-      this.animateValue(this.obj,0,this.end,diarkeia,type)
 
+      if(type !== "bars"){
+        this.end = this.obj.innerHTML
+        this.animateValue(this.obj,0,this.end,diarkeia,type)
+      }
+      else{
+        this.end = 100
+        this.animateValue(this.obj,init,this.end,diarkeia,type)
+      }
+     
+     
     }
    animateValue(obj, start, end, duration,type) {
         let startTimestamp = null;
@@ -16,8 +24,14 @@ class Counter{
           if(type === "entire"){
             obj.innerHTML = Math.floor(progress * (end - start) + start);
           }
-        else
-         obj.innerHTML = this.financial((progress * (end - start) + start));
+          if(type === "bars"){
+           // obj.style.width ='100%';
+           obj.style.width = Math.floor(progress * (end - start) + start) +'%'
+          }
+
+        if(type===""){
+          obj.innerHTML = this.financial((progress * (end - start) + start));}
+         
          
           if (progress < 1) {
             window.requestAnimationFrame(step);
