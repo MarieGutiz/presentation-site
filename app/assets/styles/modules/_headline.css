@@ -17,6 +17,12 @@
   &--white{
     color: white;
   }
+  &--keim-center{
+    text-align: center;
+    @mixin  atMedium {
+      text-align: left;
+    }
+  }
   &--small {
     font-size: 1.2rem;
     @mixin atSmall {

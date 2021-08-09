@@ -16,7 +16,9 @@ window.addEventListener('load', (event) => {
  new RevealOnScroll(document.querySelectorAll(".eaz-num"), 100,"counter")
  new RevealOnScroll(document.querySelectorAll("#about-section"), 40,"section")
  new RevealOnScroll(document.querySelectorAll(".about-items"), 60,"about")
- new RevealOnScroll(document.querySelectorAll(".skills"),50,"bars")
+ new RevealOnScroll(document.querySelectorAll(".skills"),75,"bars")
+ new RevealOnScroll(document.querySelectorAll(".promise"),75,"promise")
+ new RevealOnScroll(document.querySelectorAll(".feature-item"),75,"feature-item")
 });
 
 

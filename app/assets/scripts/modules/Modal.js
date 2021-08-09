@@ -35,7 +35,7 @@ class Modal{
      <div class="modal__inner">
        <h2 class="section-title section-title--blue section-title--less-margin"><img src="assets/images/icons/mail.svg" class="section-title__icon"> Get in <strong>Touch</strong></h2>
        <div class="wrapper wrapper--narrow">
-         <p class="modal__description">Thanks for comming until this section. You can send me a message through <a href="#">here</a>,
+         <p class="modal__description">Thanks for coming until this section. You can send me a message through <a href="mailto:analystdatajob@gmail.com">here</a>  ,
           I'll be pleased to answer you and help you with any of your questions!</p>
        </div>
      

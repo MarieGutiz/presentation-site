@@ -43,11 +43,13 @@
 
     &-list-items {
       padding-top: -5px;
+      margin: 5px;
 
       
       @mixin atMedium{
         flex-basis: 80%;
         padding-top: 0;
+        margin: 0;
       }
       ul {
         margin: 0;
@@ -64,13 +66,19 @@
         
       } 
       li:last-child a{
-        
+        .box-header--is-expanded & {
+          padding: 0.3rem 0.8rem;background-color: $mainBlue;
+        }
         @mixin atMedium {
           background-color: $mainBlue;
-  color: #FFF;
-  text-decoration: none;
-  padding: .75rem 1.2rem;
-  display: inline-block;
+          color: #FFF;
+          text-decoration: none;
+          padding: .75rem 1.2rem;
+          display: inline-block;
+
+          .box-header--dark & {padding: 0.3rem 0.8rem;}
+
+         
         }
       }
       a {
@@ -95,6 +103,7 @@
           transform: scale(1);
          
           .box-header--dark & {color: #FFF;font-size: 1rem; padding: 5px 0;}
+         
         
           &.is-current-link {
             color: #fabb69;

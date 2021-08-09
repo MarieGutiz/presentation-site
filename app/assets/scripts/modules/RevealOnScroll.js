@@ -46,7 +46,8 @@ class RevealOnScroll {
         this.lightAbout(el)
         if(this.type == "section")
         this.terminal(el)
-        //el.classList.add("reveal-item--is-visible")
+        if(this.type == "promise" || this.type == "feature-item")
+        el.classList.add("reveal-item--is-visible")
 
       if (el.isLastItem) {
         window.removeEventListener("scroll", this.scrollThrottle)
@@ -57,7 +58,7 @@ class RevealOnScroll {
   terminal(el){
     new Typed('#typed', {
       strings: [
-        'npm install^1000\n`installing components...` ^1000\n`Fetching from source...`'
+        'WELCOME TO MY PRESENTATION SITE. HOPE YOUR UX IS PLEASANT.^1000\n`</br>Copyright (C) M.G. All rights reserved 2021....` ^1000\n`Fetching article from source...`'
       ],
       typeSpeed: 40,
       backSpeed: 0,
@@ -100,8 +101,11 @@ class RevealOnScroll {
 
   hideInitially() {
     this.itemsToReveal.forEach(el => {
-      // el.classList.add("reveal-item")
       el.isRevealed = false
+
+      if(this.type == "promise" || this.type == "feature-item")
+       el.classList.add("reveal-item")
+     
     })
     this.itemsToReveal[this.itemsToReveal.length - 1].isLastItem = true
   }

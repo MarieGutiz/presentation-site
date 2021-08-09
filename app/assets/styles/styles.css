@@ -16,6 +16,7 @@
 @import 'modules/_generic-content-container.css';
 @import "modules/_section-title.css";
 @import "modules/_feature-item.css";
+@import "modules/_promise.css";
 @import "modules/_reveal-item.css";
 @import "modules/_modal.css";
 @import "modules/_social-icons.css";

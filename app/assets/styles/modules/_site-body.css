@@ -17,6 +17,7 @@
 
  &-container{
   position: relative;
+  width: 100%;
     padding: 24px;
     overflow: hidden;
     z-index: 1;
@@ -42,7 +43,7 @@
       position: relative;
       display: flex !important;
       align-items: center !important;
-      gap: 1.5rem;;
+      gap: 1.5rem;
       top:10rem;
       
     }
@@ -64,6 +65,14 @@
       border-radius: 50% ;
       display: inline-block;
       flex-shrink: 0;
+      position: relative;
+      left: 15px;
+    }
+    &-title{
+      display: inline-block;
+      flex-shrink: 0;
+      position: relative;
+      left: 30px;
     }
      &::after{
       background: #dadfe9;

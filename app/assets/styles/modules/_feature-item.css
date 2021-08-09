@@ -34,7 +34,7 @@
         margin-bottom: .8rem;
         text-align: center;
 
-        @mixin atSmall{
+        @mixin atMedium{
             text-align:left;
             margin-top:1em;
             font-size: 1.6rem;
@@ -51,6 +51,11 @@
     box-shadow: none;
     overflow: hidden;
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    width: 90%;
+    margin: auto;
+    @mixin atMedium{
+       margin: 0;
+    }
 
     &--green-bar{
         background-color: #1abc9c;
@@ -69,8 +74,4 @@
         height: 20px;
     }
 
-}
-
-.feature-bottom{
-    
 }
