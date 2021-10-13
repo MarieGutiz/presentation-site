@@ -33,7 +33,7 @@ class Counter{
           obj.innerHTML = this.financial((progress * (end - start) + start));}
          
          
-          if (progress < 1) {
+        if (progress < 1) {
             window.requestAnimationFrame(step);
            
           }

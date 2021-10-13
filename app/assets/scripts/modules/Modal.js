@@ -16,8 +16,7 @@ class Modal{
         document.addEventListener("keyup",e=>this.keyPressHandler(e))
     }
 
-    openTheModal(e){
-      console.log("Open sesame")
+    openTheModal(){
         this.modal.classList.add("modal--is-visible")
     }
     closeTheModal(){
