@@ -9,7 +9,6 @@
 *.vi
 *~
 *.sass-cache
-app/index.html
 node_modules/
 docs/
 .tmp/
