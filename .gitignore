@@ -10,6 +10,7 @@
 *~
 *.sass-cache
 app/index.html
+app/assets/images/
 node_modules/
 docs/
 .tmp/
