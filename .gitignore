@@ -9,7 +9,7 @@
 *.vi
 *~
 *.sass-cache
-app/assets/images/
+
 node_modules/
 docs/
 .tmp/

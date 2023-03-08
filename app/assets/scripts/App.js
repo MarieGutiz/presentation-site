@@ -26,6 +26,9 @@ window.addEventListener('load', (event) => {
  new RevealOnScroll(document.querySelectorAll(".skills"),75,"bars")
  new RevealOnScroll(document.querySelectorAll(".promise"),75,"promise")
  new RevealOnScroll(document.querySelectorAll(".feature-item"),75,"feature-item")
+ const date = new Date();
+ let year = date.getFullYear();
+document.getElementById("year").innerHTML = year;
 });
 
 
@@ -44,8 +47,6 @@ document.querySelectorAll(".open-modal").forEach(el => {
     }
   })
 })
-
-
 
 /** webpack server */
 if (module.hot) {
