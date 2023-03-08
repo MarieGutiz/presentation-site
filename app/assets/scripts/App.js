@@ -7,9 +7,16 @@ import LineGraph from './modules/LineGraph'
 import RevealOnScroll from './modules/RevealOnScroll';
 
 window.addEventListener('load', (event) => {
-  new Counter(document.querySelector("#counter"),5000,"entire")
-  new Counter(document.querySelector("#sales"),5000,"")
-  new Counter(document.querySelector("#profit"),5000,"")
+  window.addEventListener("load", event => {
+    var image = document.querySelector('#bnr-img');
+    var isLoaded = image.complete && image.naturalHeight !== 0;
+    if(isLoaded){
+      new Counter(document.querySelector("#counter"),5000,"entire")
+      new Counter(document.querySelector("#sales"),5000,"")
+      new Counter(document.querySelector("#profit"),5000,"")
+    }
+    
+}); 
   new StickHeader()
    new MobileMenu()
  new LineGraph(document.querySelector('#svglinegraph'));
